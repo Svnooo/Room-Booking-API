@@ -1,29 +1,32 @@
-  spring:
-    application:
-      name: meetingroom
+spring:
+  application:
+    name: meetingroom
 
-    datasource:
-      url: jdbc:mysql://localhost:3309/meeting_room_db
-      username: root
-      password: root
-      driver-class-name: com.mysql.cj.jdbc.Driver
+  datasource:
+    url: jdbc:mysql://localhost:3309/meeting_room_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
-    jpa:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+    properties:
       hibernate:
-        ddl-auto: update
-      show-sql: true
-      open-in-view: false
-      properties:
-        hibernate:
-          format_sql: true
+        format_sql: true
 
-    jackson:
-      time-zone: Asia/Jakarta
+  jackson:
+    time-zone: Asia/Jakarta
 
-  server:
-    port: 9000
+server:
+  port: 9000
 
-  logging:
-    level:
-      org.hibernate.SQL: DEBUG
-      org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+app:
+  api-key: ${API_KEY:H7pIVIVv66oLudO2thSzMVgk6wIPPEfSNhrlmcBYmpk}
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
