@@ -33,17 +33,17 @@ public class ApiKeyFilter extends OncePerRequestFilter {
         String path = request.getRequestURI();
 
         // Enforce API Key validation for all public endpoints under /api/public/
-        if (path.startsWith("/api/public")) {
-            String apiKeyHeader = request.getHeader("X-API-KEY");
+        // if (path.startsWith("/api/public")) {
+        //     String apiKeyHeader = request.getHeader("X-API-KEY");
 
-            if (apiKeyHeader == null || !apiKeyHeader.equals(expectedApiKey)) {
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.setContentType("application/json");
-                response.setCharacterEncoding("UTF-8");
-                response.getWriter().write("{\"message\": \"Invalid or missing API Key\", \"status\": 401}");
-                return;
-            }
-        }
+        //     if (apiKeyHeader == null || !apiKeyHeader.equals(expectedApiKey)) {
+        //         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        //         response.setContentType("application/json");
+        //         response.setCharacterEncoding("UTF-8");
+        //         response.getWriter().write("{\"message\": \"Invalid or missing API Key\", \"status\": 401}");
+        //         return;
+        //     }
+        // }
 
         filterChain.doFilter(request, response);
     }
